@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mock-genai-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mock-genai
+  template:
+    metadata:
+      labels:
+        app: mock-genai
+    spec:
+      containers:
+      - name: mock-genai-container
+        image: mock-genai-app
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
